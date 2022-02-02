@@ -1,3 +1,14 @@
+$('document').ready(() => {
+    $('#contenedor_logined').css("display", "none")
+    if (!!localStorage.getItem('token')){
+        $('#contenedor-login').css("display", "none")
+        $('#contenedor_logined').css("display", "block")
+        $('#id_logined').text(localStorage.getItem("email"))
+    }
+})
+
+
+
 $("#login_form").submit(async(e) => {
     e.preventDefault();
 
@@ -31,3 +42,8 @@ const enviarDatos = async(url = "", data = {}) => {
     $("#btnIngresar").text("Ingresar")
     return response.json()
 }
+
+$('#btnSalir').click(() => {
+    localStorage.clear()
+    location.reload()
+})
